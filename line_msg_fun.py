@@ -15,6 +15,7 @@ def read_function(filename):
 
 def count_by_name(messages,name):
     count = 0
+    found_name = None
 
     if not messages:
         print("無訊息資料!!!")
@@ -22,9 +23,14 @@ def count_by_name(messages,name):
         for message in messages:
             split_message = message.split(' ')
             if split_message[1] == name:
+                found_name = split_message[1]
                 for msg in split_message[2:]:
                     count += len(msg)
-    print(name,'字數共:',count,'字')
+
+    if not found_name:
+        print('沒有', name, '的訊息!!!')
+    else:
+        print(name,'字數共:',count,'字')
 
 def main():
     filename = 'line.txt'

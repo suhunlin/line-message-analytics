@@ -32,15 +32,30 @@ def count_by_name(messages,name):
     else:
         print(name,'字數共:',count,'字')
 
+def count_by_string(messages,search_string):
+    count = 0
+
+    if not messages:
+        print("無訊息資料!!!")
+    else:
+        for message in messages:
+            split_message = message.split(' ')
+            for msg in split_message[2:]:
+                if msg == search_string:
+                    count += 1
+    print(search_string,'出現：',count,'次')
+
 def main():
     filename = 'line.txt'
-    name = 'Viki'
+    name = 'Allen'
+    search_string = '圖片'
     if os.path.exists(filename):
         messages = read_function(filename)
     else:
         messages = []
         print('請輸入正確的檔案名稱及路徑!!!')
     count_by_name(messages,name)
+    count_by_string(messages,'圖片')
 
 if __name__ == '__main__':
     main()
